@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Part 2</title>
+</head>
+
+<body>
+    <!-- Contains a form with two inputs for a title and rating along with a button to submit the form. -->
+    <form>
+        <input id="title" placeholder="Title">
+        <input id="rating" placeholder="Rating">
+        <button id="submit">Submit</button>
+    </form>
+    <div id="movies-list">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $("#submit").on('click', function (e) {
+            e.preventDefault();
+            let title = $("#title").val();
+            let rating = $("#rating").val();
+
+            // $("#movies-list").append("<ul>").append($("<li>", { text: $("input").eq(0).val() }).append($("<li>", { text: $("input").eq(1).val() })).append($("<button>", { text: "remove" })).addClass("remove-button"));
+            // / $("ul").append($("<li>", {text: $("input").eq(0).val()}).append($("<li>", {text: $("input").eq(1).val()})));
+            // $("#movies-list").append(x)
+
+            let newMovie = $("<ul>").append($("<li>").text(title)).append($("<li>").text(rating)).append($("<button>").text("remove").addClass("remove-button"));
+            $("#movies-list").append(newMovie);
+
+
+            $("#title").val('');
+            $("#rating").val('');
+
+        });
+        // function createMovie(t, r){
+
+        //     // (`<ul>
+        //     //     <li>
+        //     //         text
+        //     //         </li>
+        //     //     <li>
+        //     //         text2
+        //     //         </li>
+        //     //         <button id="remove-button">remove</button>
+        //     // </ul>`)
+        // };
+        
+        // $('.remove-button').on('click', function(e){
+        //     $(e.target).closest("ul").remove();
+        // })
+        $("#movies-list").on('click', '.remove-button', function (e) {
+            $(e.target).closest("ul").remove();
+        });
+    </script>
+</body>
+
+</html>
